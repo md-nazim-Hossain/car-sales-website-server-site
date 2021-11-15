@@ -143,6 +143,15 @@ async function run() {
           res.json(result);
       });
 
+      //DELETE Product API
+      app.delete('/product/:id', async (req,res) =>{
+          const id = req.params.id;
+          const query = {_id:ObjectId(id)};
+          console.log("Id",id);
+          const result = await carsCollection.deleteOne(query);
+          res.json(result);
+      });
+
     } finally {
     //   await client.close();
     }
